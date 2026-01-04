@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analyst Portfolio | [Your Name]</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --bg: #f4f7f6;
+            --text: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-weight: bold; font-size: 1.5rem; }
+
+        /* Filter Buttons */
+        .filter-container {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background: var(--white);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover { transform: translateY(-5px); }
+
+        .project-img {
+            height: 180px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .project-info { padding: 1.5rem; }
+        
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* Tag Colors */
+        .tag-python { background: #e1f5fe; color: #0277bd; }
+        .tag-sql { background: #fff3e0; color: #ef6c00; }
+        .tag-powerbi { background: #fffde7; color: #fbc02d; }
+
+        .btn-view {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">DataAnalyst.IO</div>
+    <div>[Your Name]</div>
+</nav>
+
+<header style="text-align: center; padding: 4rem 1rem;">
+    <h1>Insight-Driven Data Solutions</h1>
+    <p>Specializing in Python Automation, SQL Optimization, and Power BI Storytelling</p>
+</header>
+
+<div class="filter-container">
+    <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+    <button class="filter-btn" onclick="filterProjects('python')">Python</button>
+    <button class="filter-btn" onclick="filterProjects('sql')">SQL</button>
+    <button class="filter-btn" onclick="filterProjects('powerbi')">Power BI</button>
+</div>
+
+<section class="projects-grid" id="projectContainer">
+    <div class="project-card" data-category="python">
+        <div class="project-img">🐍 Python Dashboard</div>
+        <div class="project-info">
+            <span class="tag tag-python">Python / Pandas</span>
+            <h3>E-commerce Sales Scraper</h3>
+            <p>Automated data extraction from 5+ retail sites with real-time price tracking.</p>
+            <a href="#" class="btn-view">View Case Study →</a>
+        </div>
+    </div>
+
+    <div class="project-card" data-category="sql">
+        <div class="project-img">🗄️ SQL Optimization</div>
+        <div class="project-info">
+            <span class="tag tag-sql">PostgreSQL / BigQuery</span>
+            <h3>Financial Fraud Detection</h3>
+            <p>Complex CTEs and Window Functions used to identify suspicious patterns in 1M+ transactions.</p>
+            <a href="#" class="btn-view">View SQL Queries →</a>
+        </div>
+    </div>
+
+    <div class="project-card" data-category="powerbi">
+        <div class="project-img">📊 Power BI Report</div>
+        <div class="project-info">
+            <span class="tag tag-powerbi">Power BI / DAX</span>
+            <h3>Supply Chain Efficiency</h3>
+            <p>Interactive dashboard visualizing logistics bottlenecks and KPI performance.</p>
+            <a href="#" class="btn-view">Open Report →</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    function filterProjects(category) {
+        const cards = document.querySelectorAll('.project-card');
+        const buttons = document.querySelectorAll('.filter-btn');
+
+        // Update active button
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        // Filter Logic
+        cards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
